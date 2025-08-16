@@ -3,9 +3,7 @@ import { useAuthStore } from '@/store/auth';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Users, Briefcase, Calendar } from 'lucide-react';
-import { ProfessionalsTable } from '@/components/dashboard/ProfessionalsTable';
-import { SpaceServicesTable } from '@/components/dashboard/SpaceServicesTable';
-import { SpaceBookingsTable } from '@/components/dashboard/SpaceBookingsTable';
+import { ProfessionalsTable, SpaceServicesTable, SpaceBookingsTable } from '@/components/dashboard/SpaceTables';
 
 const Space = () => {
   const { user } = useAuthStore();
