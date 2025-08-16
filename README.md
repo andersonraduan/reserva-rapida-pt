@@ -1,73 +1,131 @@
-# Welcome to your Lovable project
+# SaaS de Agendamentos com Pagamento
 
-## Project info
+Aplicação React + TypeScript completa para agendamentos com sistema de pagamento de sinal.
 
-**URL**: https://lovable.dev/projects/a4407b52-67c3-4bc6-9574-9e273a6ed78e
+## 🚀 Funcionalidades
 
-## How can I edit this code?
+### ✅ Implementado na v1
+- **Autenticação completa** (login/signup com RBAC)
+- **Fluxo de agendamento** (selecionar serviço → horário → pagamento)
+- **Múltiplos métodos de pagamento** (cartão, MB WAY, Multibanco)
+- **Interface responsiva** com design profissional
+- **Mocks de API funcionais** com MSW
+- **Formatação pt-PT** e moeda EUR
+- **Sistema de design consistente**
 
-There are several ways of editing your application.
+### 🔄 Próximas versões
+- Dashboard do profissional (gestão de serviços, disponibilidade)
+- Reagendamento com validações
+- Relatórios financeiros
+- Notificações por email
+- Dashboard administrativo
 
-**Use Lovable**
+## 🛠 Tecnologias
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a4407b52-67c3-4bc6-9574-9e273a6ed78e) and start prompting.
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Estado**: Zustand (auth) + React Query (dados)
+- **Roteamento**: React Router v6
+- **Datas**: Day.js com timezone support
+- **Mocks**: MSW (Mock Service Worker)
+- **UI**: Componentes shadcn/ui customizados
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🎨 Design System
 
-**Use your preferred IDE**
+**Paleta de cores profissional:**
+- Primary: Azul profissional (`#3B82F6`)
+- Gradients sutis e shadows elegantes
+- Dark mode ready
+- Componentes reutilizáveis
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 📱 Páginas Implementadas
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Home** (`/`) - Landing + seleção de serviço/profissional
+2. **Login** (`/login`) - Autenticação
+3. **Signup** (`/signup`) - Registo de nova conta
+4. **Horários** (`/availability`) - Calendário de slots disponíveis
+5. **Pagamento** (`/checkout/:id`) - Métodos de pagamento
+6. **Sucesso** (`/success/:id`) - Confirmação da marcação
 
-Follow these steps:
+## 🔧 Instalação e Execução
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Instalar dependências
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Executar em desenvolvimento
 npm run dev
+
+# Build para produção
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 🧪 Contas de Demonstração
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+**Cliente:**
+- Email: `ana@example.com`
+- Password: qualquer
 
-**Use GitHub Codespaces**
+**Profissional:**
+- Email: `joao@example.com`
+- Password: qualquer
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📋 API Mockada
 
-## What technologies are used for this project?
+Os mocks estão ativos por padrão e simulam:
+- Autenticação JWT
+- CRUD de serviços
+- Disponibilidade de horários
+- Criação e pagamento de marcações
+- Configurações globais
 
-This project is built with:
+**Para integrar backend real:**
+1. Alterar `baseUrl` em `src/api/client.ts`
+2. Remover importação `./api/worker` do `App.tsx`
+3. API segue especificação documentada nos types
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🗂 Estrutura do Projeto
 
-## How can I deploy this project?
+```
+src/
+├── components/         # Componentes reutilizáveis
+├── pages/             # Páginas da aplicação
+├── hooks/             # Custom hooks (auth, queries)
+├── store/             # Zustand stores
+├── api/               # Cliente API + mocks MSW
+├── utils/             # Utilities (datas, moeda, RBAC)
+└── components/ui/     # Sistema de design (shadcn)
+```
 
-Simply open [Lovable](https://lovable.dev/projects/a4407b52-67c3-4bc6-9574-9e273a6ed78e) and click on Share -> Publish.
+## 💰 Fluxo de Pagamento
 
-## Can I connect a custom domain to my Lovable project?
+1. **Selecionar** serviço e profissional
+2. **Escolher** horário disponível
+3. **Criar** marcação (status: draft)
+4. **Pagar** sinal para confirmar
+5. **Receber** confirmação
 
-Yes, you can!
+**Métodos suportados:**
+- Cartão (redirect simulado para Stripe)
+- MB WAY (simulação de autorização)
+- Multibanco (referência + countdown)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🔐 RBAC (Role-Based Access Control)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- **client**: Agendar e gerir as suas marcações
+- **professional**: + Gerir serviços e disponibilidade
+- **space_admin**: + Gerir equipa e espaço
+- **master_admin**: + Configurações globais e KPIs
+
+## 📈 Próximos Passos
+
+1. **Dashboard profissional** - gestão completa
+2. **Reagendamento** - com regras e validações
+3. **Relatórios** - financeiros e analytics
+4. **Notificações** - email e SMS
+5. **Multibanco** - countdown e expiração
+6. **Testes** - Vitest + RTL para fluxos críticos
+
+---
+
+Desenvolvido com ❤️ usando React + TypeScript
