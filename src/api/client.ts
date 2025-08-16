@@ -57,8 +57,11 @@ class ApiClient {
   }
 
   // Services endpoints
-  async getServices(): Promise<Service[]> {
-    return this.request('/services');
+  async getServices(professionalId?: string): Promise<Service[]> {
+    const endpoint = professionalId 
+      ? `/professionals/${professionalId}/services`
+      : '/services';
+    return this.request(endpoint);
   }
 
   async createService(data: Omit<Service, 'id'>): Promise<Service> {
@@ -92,9 +95,14 @@ class ApiClient {
 
   // Availability endpoints
   async getAvailability(
-    professionalId: string, 
-    params: { from: string; to: string; service_id?: string }
+    professionalId: string,
+    from: string,
+    to: string,
+    serviceId?: string
   ): Promise<AvailabilityResponse> {
+    const params: Record<string, string> = { from, to };
+    if (serviceId) params.service_id = serviceId;
+    
     const searchParams = new URLSearchParams(params);
     return this.request(`/professionals/${professionalId}/availability?${searchParams}`);
   }

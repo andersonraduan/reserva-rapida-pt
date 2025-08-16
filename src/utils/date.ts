@@ -65,3 +65,14 @@ export const generateTimeSlots = (
 
   return slots;
 };
+
+export const addDays = (date: Date, days: number): Date => {
+  return dayjs(date).add(days, 'day').toDate();
+};
+
+export const isValidRescheduleTime = (timeString: string): boolean => {
+  const slotTime = dayjs(timeString);
+  const now = dayjs();
+  const minTime = now.add(24, 'hour'); // 24h from now
+  return slotTime.isAfter(minTime);
+};

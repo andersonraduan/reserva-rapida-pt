@@ -23,11 +23,12 @@ export default function Availability() {
 
   const { data: availability, isLoading } = useQuery({
     queryKey: ['availability', professionalId, serviceId, from, to],
-    queryFn: () => apiClient.getAvailability(professionalId!, { 
-      from: from!, 
-      to: to!, 
-      service_id: serviceId! 
-    }),
+    queryFn: () => apiClient.getAvailability(
+      professionalId!, 
+      from!, 
+      to!, 
+      serviceId!
+    ),
     enabled: !!(professionalId && serviceId && from && to),
   });
 
