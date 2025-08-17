@@ -17,7 +17,7 @@ import AdminDashboard from "./pages/dashboard/Admin";
 import ProfessionalReports from "./pages/reports/Professional";
 import SpaceReports from "./pages/reports/Space";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-import './api/worker';
+// import './api/worker';
 
 const queryClient = new QueryClient();
 
